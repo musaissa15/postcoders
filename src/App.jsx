@@ -6,27 +6,28 @@ import "./App.css";
 function App() {
 	const [areas, setAreas] = useState([]);
 	const [postcode, setPostcode] = useState("");
+	 const [clicked, setClicked] = useState(false)
 	const load = async () => {
 		try {
-			const areaData = await getAreaData();
+			const areaData = await getAreaData(postcode);
 
-			areas.concat(areaData);
+			// areas.concat(areaData);
 
 			setAreas(areaData);
 		} catch (error) {
-			window.alert("todo: fix app");
+			// window.alert("todo: fix app");
 		}
 	};
 
 	useEffect(() => {
 		load();
-	}, []);
-
+	}, [postcode]);
+console.log(areas);
 	return (
 		<div className="App">
 			<h1>Postcoders</h1>
-			<Input postcode={postcode} setPostcode={setPostcode} />
-			<h2>{`Areas for BB10: ${areas.length}`}</h2>
+			<Input postcode={postcode} setPostcode={setPostcode} clicked={clicked} setClicked={setClicked}/>
+			<h2>{areas && clicked ? `Areas for ${postcode}: ${areas.length}`: !areas && !clicked ? 'search':null}</h2>
 		</div>
 	);
 }

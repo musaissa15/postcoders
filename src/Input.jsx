@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react'
-import {getByPostCode} from './api';
 
-function Input ({postcode, setPostcode}) {
-   
+
+function Input ({postcode, setPostcode, clicked, setClicked}) {
+  
     const handleChange = (event) => {
         setPostcode(event.target.value);
        
     };
-
+console.log(postcode)
     const handleSubmit = (event) => {
         event.preventDefault();
+        setClicked(true)
     };
+
+ 
    
         return (
             <div>
