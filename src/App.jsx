@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
 	const [areas, setAreas] = useState([]);
 	const [postcode, setPostcode] = useState("");
-	 const [clicked, setClicked] = useState(false)
+	const [clicked, setClicked] = useState(false);
 	const load = async () => {
 		try {
 			const areaData = await getAreaData(postcode);
@@ -18,16 +18,36 @@ function App() {
 			// window.alert("todo: fix app");
 		}
 	};
-
+	console.log(Object.keys(areas));
 	useEffect(() => {
 		load();
 	}, [postcode]);
-console.log(areas);
+
 	return (
 		<div className="App">
 			<h1>Postcoders</h1>
-			<Input postcode={postcode} setPostcode={setPostcode} clicked={clicked} setClicked={setClicked}/>
-			<h2>{areas && clicked ? `Areas for ${postcode}: ${areas.length}`: !areas && !clicked ? 'search':null}</h2>
+			<Input
+				postcode={postcode}
+				setPostcode={setPostcode}
+				clicked={clicked}
+				setClicked={setClicked}
+			/>
+			<h2>
+				{areas && clicked
+					? `Areas for ${postcode}: ${areas.length}`
+					: !areas && !clicked
+					? "search"
+					: null}
+			</h2>
+			<div>
+				<ul>
+					{areas.map((area) => {
+						return <li>
+							<h1 style={{color: 'white'}}>{area.country}</h1>
+						</li>;
+					})}
+				</ul>
+			</div>
 		</div>
 	);
 }
