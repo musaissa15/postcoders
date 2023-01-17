@@ -22,7 +22,9 @@ function App() {
 	useEffect(() => {
 		load();
 	}, [postcode]);
-
+	let styles = {
+		color: "pink",
+	};
 	return (
 		<div className="App">
 			<h1>Postcoders</h1>
@@ -42,9 +44,18 @@ function App() {
 			<div>
 				<ul>
 					{areas.map((area) => {
-						return <li>
-							<h1 style={{color: 'white'}}>{area.country}</h1>
-						</li>;
+						return (
+							<li>
+								
+								<h1 className="info">{area["place name"]}</h1>
+								<p>{area.state}</p>
+								<h6>{area['state abbreviation']}</h6>
+								<p>{area.longitude}</p>
+								<p>{area.latitude}</p>
+							
+							</li>
+							
+						);
 					})}
 				</ul>
 			</div>
