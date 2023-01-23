@@ -35,26 +35,27 @@ function App() {
 				setClicked={setClicked}
 			/>
 			<h2>
-				{areas && clicked
-					? `Areas for ${postcode}: ${areas.length}`
-					: !areas && !clicked
-					? "search"
-					: null}
+				{areas && clicked ? `Areas for ${postcode}: ${areas.length}` : null}
 			</h2>
 			<div>
 				<ul>
 					{areas.map((area) => {
 						return (
 							<li>
-								
-								<h1 className="info">{!area["place name"] ? 'Place name unknown' : area["place name"]}</h1>
-								<p>{!area.state ? 'State unknown' : area.state}</p>
-								<h6>{!area['state abbreviation'] ? 'Arbbreviation unknown' : area['state abbreviation']}</h6>
-								<p>{!area.longitude ? 'Longitude unknown' : area.longitude}</p>
-								<p>{!area.latitude ? 'Latitude unknown' : area.latitude}</p>
-							
+								<h1 className="info">
+									{!area["place name"]
+										? "Place name unknown"
+										: area["place name"]}
+								</h1>
+								<p>{!area.state ? "State unknown" : area.state}</p>
+								<h6>
+									{!area["state abbreviation"]
+										? "Arbbreviation unknown"
+										: area["state abbreviation"]}
+								</h6>
+								<p>{!area.longitude ? "Longitude unknown" : area.longitude}</p>
+								<p>{!area.latitude ? "Latitude unknown" : area.latitude}</p>
 							</li>
-							
 						);
 					})}
 				</ul>
