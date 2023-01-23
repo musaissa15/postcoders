@@ -47,11 +47,11 @@ function App() {
 						return (
 							<li>
 								
-								<h1 className="info">{area["place name"]}</h1>
-								<p>{area.state}</p>
-								<h6>{area['state abbreviation']}</h6>
-								<p>{area.longitude}</p>
-								<p>{area.latitude}</p>
+								<h1 className="info">{!area["place name"] ? 'Place name unknown' : area["place name"]}</h1>
+								<p>{!area.state ? 'State unknown' : area.state}</p>
+								<h6>{!area['state abbreviation'] ? 'Arbbreviation unknown' : area['state abbreviation']}</h6>
+								<p>{!area.longitude ? 'Longitude unknown' : area.longitude}</p>
+								<p>{!area.latitude ? 'Latitude unknown' : area.latitude}</p>
 							
 							</li>
 							
