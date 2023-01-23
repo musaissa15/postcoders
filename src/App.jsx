@@ -11,20 +11,16 @@ function App() {
 		try {
 			const areaData = await getAreaData(postcode);
 
-			// areas.concat(areaData);
-
 			setAreas(areaData);
 		} catch (error) {
-			// window.alert("todo: fix app");
+			console.log(error);
 		}
 	};
-	console.log(Object.keys(areas));
+
 	useEffect(() => {
 		load();
 	}, [postcode]);
-	let styles = {
-		color: "pink",
-	};
+	
 	return (
 		<div className="App">
 			<h1>Postcoders</h1>
