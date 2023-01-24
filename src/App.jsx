@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getAreaData } from "./api";
 import Input from "./Input";
 import "./App.css";
+import Card from "react-bootstrap/Card";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	const [areas, setAreas] = useState([]);
@@ -20,7 +22,7 @@ function App() {
 	useEffect(() => {
 		load();
 	}, [postcode]);
-	
+
 	return (
 		<div className="App">
 			<h1>Postcoders</h1>
@@ -38,19 +40,27 @@ function App() {
 					{areas.map((area) => {
 						return (
 							<li>
-								<h1 className="info">
-									{!area["place name"]
-										? "Place name unknown"
-										: area["place name"]}
-								</h1>
-								<p>{!area.state ? "State unknown" : area.state}</p>
-								<h6>
-									{!area["state abbreviation"]
-										? "Arbbreviation unknown"
-										: area["state abbreviation"]}
-								</h6>
-								<p>{!area.longitude ? "Longitude unknown" : area.longitude}</p>
-								<p>{!area.latitude ? "Latitude unknown" : area.latitude}</p>
+								{/* <h1 className="info"> */}
+								<Card style={{width: '18rem', bg : 'primary'}}>
+									<Card.Title>
+										<h1>
+											{!area["place name"]
+												? "Place name unknown"
+												: area["place name"]}
+										</h1>
+									</Card.Title>
+									{/* </h1> */}
+									<p>{!area.state ? "State unknown" : area.state}</p>
+									<h6>
+										{!area["state abbreviation"]
+											? "Arbbreviation unknown"
+											: area["state abbreviation"]}
+									</h6>
+									<p>
+										{!area.longitude ? "Longitude unknown" : area.longitude}
+									</p>
+									<p>{!area.latitude ? "Latitude unknown" : area.latitude}</p>
+								</Card>
 							</li>
 						);
 					})}
