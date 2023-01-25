@@ -41,7 +41,7 @@ function App() {
 						return (
 							<li>
 								{/* <h1 className="info"> */}
-								<Card style={{width: '18rem', bg : 'primary'}}>
+								<Card style={{width: '18rem', bg : 'secondary'}}>
 									<Card.Title>
 										<h1>
 											{!area["place name"]
