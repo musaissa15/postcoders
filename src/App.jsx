@@ -22,7 +22,7 @@ function App() {
 	useEffect(() => {
 		load();
 	}, [postcode]);
-
+console.log(typeof(areas));
 	return (
 		<div className="App">
 			<h1>Postcoders</h1>
