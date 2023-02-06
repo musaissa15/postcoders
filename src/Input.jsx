@@ -7,7 +7,7 @@ function Input ({postcode, setPostcode, clicked, setClicked}) {
         setPostcode(event.target.value);
        
     };
-console.log(postcode)
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setClicked(true)
